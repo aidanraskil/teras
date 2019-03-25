@@ -1,6 +1,6 @@
 <?php
 
-Route::name('admin.')->namespace('Admin')->prefix('admin')->group(function () {
+Route::name('admin.')->namespace('Iskandarali\Teras\Http\Controllers\Admin')->middleware('web')->prefix('admin')->group(function () {
 	Route::get('/', function () {
 	    return view('teras::admin.dashboard');
 	});
@@ -10,5 +10,5 @@ Route::name('admin.')->namespace('Admin')->prefix('admin')->group(function () {
 	Route::resource('user', 'UserController');
 });
 
-Route::resource('office', 'OfficeController');
+Route::resource('office', 'Iskandarali\Teras\Http\Controllers\OfficeController');
 
