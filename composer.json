@@ -9,6 +9,23 @@
             "email": "iskandar_ali@adk.gov.my"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Iskandarali\\Teras\\": "src"
+        }
+    },
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "spatie/laravel-permission": "^2.36.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Iskandarali\\Teras\\TerasServiceProvider"
+            ]
+        },
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
 }

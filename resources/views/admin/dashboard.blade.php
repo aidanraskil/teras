@@ -1,0 +1,1 @@
+@extends('teras::layouts.app')
