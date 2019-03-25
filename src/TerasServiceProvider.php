@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 
 class TerasServiceProvider extends ServiceProvider
 {
-	/**
+    /**
      * Register any application services.
      *
      * @return void
