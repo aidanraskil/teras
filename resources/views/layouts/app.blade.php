@@ -41,6 +41,9 @@
                                 <a class="dropdown-item" href="{{ route('admin.user.index') }}">
                                     {{ __('User') }}
                                 </a>
+                                <a class="dropdown-item" href="{{ route('admin.role.index') }}">
+                                    {{ __('Role') }}
+                                </a>
                             </div>
                         </li>
                     </ul>
