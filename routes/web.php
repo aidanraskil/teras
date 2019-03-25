@@ -4,11 +4,9 @@ Route::name('admin.')->namespace('Iskandarali\Teras\Http\Controllers\Admin')->mi
 	Route::get('/', function () {
 	    return view('teras::admin.dashboard');
 	});
-	Route::get('email', function () {
-	    return 'kaka';
-	});
-	Route::resource('user', 'UserController');
+  Route::resource('user', 'UserController');
+	Route::resource('role', 'RoleController');
+  Route::resource('office', 'OfficeController');
 });
 
-Route::resource('office', 'Iskandarali\Teras\Http\Controllers\OfficeController');
 

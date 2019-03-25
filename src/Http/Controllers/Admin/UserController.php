@@ -23,6 +23,6 @@ class UserController extends Controller
      */
 	public function index()
 	{
-		return view('teras::admin.dashboard');
+		return view('teras::admin.user.index');
 	}
 }
