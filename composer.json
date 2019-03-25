@@ -1,0 +1,14 @@
+{
+    "name": "iskandarali/teras",
+    "description": "Pakej teras untuk sistem-sistem dalaman.",
+    "type": "package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Iskandar Ali",
+            "email": "iskandar_ali@adk.gov.my"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
