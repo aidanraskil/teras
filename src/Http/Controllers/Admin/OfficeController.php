@@ -1,6 +1,6 @@
 <?php
 
-namespace Iskandarali\Teras\Http\Controllers;
+namespace Iskandarali\Teras\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
