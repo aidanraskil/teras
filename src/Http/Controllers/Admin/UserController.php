@@ -2,15 +2,15 @@
 
 namespace Iskandarali\Teras\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
-use Spatie\Permission\Models\Role;
+use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-	/**
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -21,25 +21,27 @@ class UserController extends Controller
     }
 
     /**
-     * [index description]
+     * [index description].
+     *
      * @return [type] [description]
      */
-	public function index()
-	{
+    public function index()
+    {
         $users = User::all();
 
-		return view('teras::admin.user.index', compact('users'));
-	}
+        return view('teras::admin.user.index', compact('users'));
+    }
 
     public function create()
     {
-        # code...
+        // code...
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -57,7 +59,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        if($request->password == '') {
+        if ($request->password == '') {
             $input = $request->except('password'); //Retreive the name, email and password fields
         } else {
             $input = $request->all(); //Retreive the name, email and password fields
@@ -68,15 +70,13 @@ class UserController extends Controller
 
         if (isset($roles)) {
             $user->roles()->sync($roles);  //If one or more role is selected associate user to roles
-        }
-        else {
+        } else {
             $user->roles()->detach(); //If no role is selected remove exisiting role associated to a user
         }
 
         if (isset($permissions)) {
             $user->permissions()->sync($permissions);  //If one or more role is selected associate user to roles
-        }
-        else {
+        } else {
             $user->permissions()->detach(); //If no role is selected remove exisiting role associated to a user
         }
 

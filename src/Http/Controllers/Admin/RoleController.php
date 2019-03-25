@@ -2,72 +2,72 @@
 
 namespace Iskandarali\Teras\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Spatie\Permission\Models\Role;
+use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
-  /**
-  * Create a new controller instance.
-  *
-  * @return void
-  */
-  public function __construct()
-  {
-    $this->middleware('auth');
-  }
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
-  public function index()
-  {
-    $roles = Role::all();
+    public function index()
+    {
+        $roles = Role::all();
 
-    return view('teras::admin.role.index', compact('roles'));
-  }
+        return view('teras::admin.role.index', compact('roles'));
+    }
 
-  public function create()
-  {
-      # code...
-  }
+    public function create()
+    {
+        // code...
+    }
 
-  public function edit($id)
-  {
-    $role = Role::findOrFail($id);
+    public function edit($id)
+    {
+        $role = Role::findOrFail($id);
 
-    $permissions = Permission::all();
+        $permissions = Permission::all();
 
-    return view('teras::admin.role.edit', compact('role', 'permissions'));
-  }
+        return view('teras::admin.role.edit', compact('role', 'permissions'));
+    }
 
-  public function update(Request $request, $id)
-  {
-    $role = Role::findOrFail($id);
+    public function update(Request $request, $id)
+    {
+        $role = Role::findOrFail($id);
 
-    $this->validate($request, [
-      'name'=>'required|max:50|unique:roles,name,'.$id,
-      'permissions' =>'required',
+        $this->validate($request, [
+      'name'        => 'required|max:50|unique:roles,name,'.$id,
+      'permissions' => 'required',
     ]);
 
-    $input = $request->except(['permissions']);
+        $input = $request->except(['permissions']);
 
-    $permissions = $request['permissions'];
+        $permissions = $request['permissions'];
 
-    $role->fill($input)->save();
+        $role->fill($input)->save();
 
-    $p_all = Permission::all();
+        $p_all = Permission::all();
 
-    foreach ($p_all as $p) {
-        $role->revokePermissionTo($p);
+        foreach ($p_all as $p) {
+            $role->revokePermissionTo($p);
+        }
+
+        foreach ($permissions as $permission) {
+            $p = Permission::where('id', '=', $permission)->firstOrFail();
+            $role->givePermissionTo($p);
+        }
+
+        // flash('Peranan'. $role->name.' telah berjaya dikemaskini')->success();
+
+        return redirect()->route('admin.role.index');
     }
-
-    foreach ($permissions as $permission) {
-        $p = Permission::where('id', '=', $permission)->firstOrFail();
-        $role->givePermissionTo($p);
-    }
-
-    // flash('Peranan'. $role->name.' telah berjaya dikemaskini')->success();
-
-    return redirect()->route('admin.role.index');
-  }
 }
