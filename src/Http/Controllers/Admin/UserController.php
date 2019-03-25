@@ -31,6 +31,11 @@ class UserController extends Controller
 		return view('teras::admin.user.index', compact('users'));
 	}
 
+    public function create()
+    {
+        # code...
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

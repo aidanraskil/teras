@@ -11,7 +11,7 @@
         @method('PUT')
         @csrf
                 <div class="form-group">
-                    <label for="name" class="col-form-label">Nama</label> <span class="text-danger">*</span>
+                    <label for="name" class="col-form-label">Nama</label><span class="text-danger"> *</span>
                     <input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $user->name }}" >
                     @if ($errors->has('name'))
                         <span class="invalid-feedback" role="alert">
@@ -20,7 +20,7 @@
                     @endif
                 </div>
                 <div class="form-group">
-                    <label for="email" class="col-form-label">Email</label>
+                    <label for="email" class="col-form-label">Email<span class="text-danger"> *</span></label>
                     <input type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $user->email }}" >
                     @if ($errors->has('email'))
                         <span class="invalid-feedback" role="alert">

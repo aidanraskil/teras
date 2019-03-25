@@ -26,6 +26,11 @@ class RoleController extends Controller
     return view('teras::admin.role.index', compact('roles'));
   }
 
+  public function create()
+  {
+      # code...
+  }
+
   public function edit($id)
   {
     $role = Role::findOrFail($id);

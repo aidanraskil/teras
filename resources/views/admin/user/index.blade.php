@@ -3,16 +3,16 @@
 @section('content')
 <div class="container">
   <div class="card">
-    <div class="card-header d-flex align-items-center justify-content-between">{{ __('Role') }}
+    <div class="card-header d-flex align-items-center justify-content-between">{{ __('User') }}
       @if(!$users->isEmpty())
-        <a class="btn btn-primary btn-sm" href="{{ route('admin.role.create') }}">Add Role</a>
+        <a class="btn btn-primary btn-sm" href="{{ route('admin.user.create') }}">Add User</a>
       @endif
     </div>
     @if($users->isEmpty())
       baba
     @else
       <div class="card-body">
-        <form class="form-inline" action="{{ route('admin.role.index') }}" method="GET">
+        <form class="form-inline" action="{{ route('admin.user.index') }}" method="GET">
           <label class="sr-only" for="name">Name</label>
           <input type="text" class="form-control mr-2" name="name" placeholder="Name">
           <button type="submit" class="btn btn-primary">Search</button>
