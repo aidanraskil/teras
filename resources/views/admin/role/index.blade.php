@@ -9,7 +9,12 @@
       @endif
     </div>
     @if($roles->isEmpty())
-      baba
+      <div class="card-body">
+        <div class="text-center p-4" style="border: dotted 0.1rem #ededed;">
+          <h5 >No Roles Founded</h5>
+          <a href="{{ route('admin.role.create') }}" class="btn btn-primary btn-sm">Create Role</a>
+        </div>
+      </div>
     @else
       <div class="card-body">
         <form class="form-inline" action="{{ route('admin.role.index') }}" method="GET">
