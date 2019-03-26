@@ -2,14 +2,14 @@
 
 namespace Iskandarali\Teras\database\seeds;
 
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
-use Illuminate\Database\Seeder;
 use App\User;
+use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class TerasTableSeeder extends Seeder
 {
-	public function run()
+    public function run()
     {
         // Reset cached roles and permissions
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
@@ -34,8 +34,8 @@ class TerasTableSeeder extends Seeder
         $role->givePermissionTo(Permission::all());
 
         $user = User::create([
-            'name' => 'Admin',
-            'email' => 'admin@example.com',
+            'name'     => 'Admin',
+            'email'    => 'admin@example.com',
             'password' => bcrypt('admin'),
         ]);
 
