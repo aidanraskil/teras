@@ -26,3 +26,31 @@ class User extends Authenticatable
 }
 ```
 
+Insert into kernal
+```bash
+protected $routeMiddleware = [
+    // ...
+    'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
+    'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
+    'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
+]
+```
+
+Run
+```bash
+php artisan db:seed --class="Iskandarali\Teras\database\seeds\TerasTableSeeder"
+```
+
+Add below at resources/views/layouts/app.blade.php
+```bash
+<ul class="navbar-nav mr-auto">
+	@role('admin')
+		<li class="nav-item">
+			<a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+		</li>
+	@endrole
+</ul>
+```
+
+
+

@@ -13,6 +13,7 @@ class TerasServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        include __DIR__.'/../database/seeds/TerasTableSeeder.php';
     }
 
     /**
