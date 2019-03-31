@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('css')
 </head>
 <body>
     <div id="app">
@@ -43,6 +44,9 @@
                                 </a>
                                 <a class="dropdown-item" href="{{ route('admin.role.index') }}">
                                     {{ __('Role') }}
+                                </a>
+                                <a class="dropdown-item" href="{{ route('admin.office.index') }}">
+                                    {{ __('Office') }}
                                 </a>
                             </div>
                         </li>
@@ -88,5 +92,6 @@
             @yield('content')
         </main>
     </div>
+    @yield('js')
 </body>
 </html>
