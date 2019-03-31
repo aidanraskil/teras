@@ -2,9 +2,9 @@
 
 namespace Iskandarali\Teras\Http\Controllers\Admin;
 
-use Iskandarali\Teras\Model\Office;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Iskandarali\Teras\Model\Office;
 
 class OfficeController extends Controller
 {
@@ -23,7 +23,7 @@ class OfficeController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name'        => 'required|unique:offices'
+            'name'        => 'required|unique:offices',
         ]);
 
         $office = Office::create($request->all());
